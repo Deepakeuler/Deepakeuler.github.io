@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Deepak Sharma</title>
+<meta name="description" content="Deepak Sharma — backend software engineer (Java, Spring Boot, distributed systems). Ex-Flipkart. Open to SDE 2 roles globally.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a sticky identity column on the left (name, role, contact) and a scrolling record on the right — impact numbers, work history, skills, education. Stacks to one column on phones. */
+:root {
+  --paper: #f5f7f8;
+  --surface: #ffffff;
+  --ink: #12181d;
+  --muted: #56636d;
+  --rule: #d8dfe3;
+  --accent: #0b6e72;
+  --accent-soft: #e0f0f0;
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0e1316; --surface: #151c20; --ink: #e7edf0; --muted: #9aa8b1;
+    --rule: #26323a; --accent: #4fc4c4; --accent-soft: #143033; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0e1316; --surface: #151c20; --ink: #e7edf0; --muted: #9aa8b1;
+  --rule: #26323a; --accent: #4fc4c4; --accent-soft: #143033; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 400 16px/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 56px 72px;
+  display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: 64px;
+}
+/* ---------- identity column */
+.id { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 40px); align-self: start; display: grid; gap: 22px; }
+.id h1 { font: 700 clamp(2.4rem, 5vw, 3.25rem)/1.02 var(--display); letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+.role { font: 500 1.05rem/1.4 var(--body); margin: 0; }
+.role span { color: var(--muted); font-weight: 400; display: block; }
+.status {
+  display: inline-flex; align-items: center; gap: 8px; width: fit-content;
+  font: 500 0.78rem/1 var(--mono); letter-spacing: 0.02em;
+  padding: 8px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--ink);
+}
+.status i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+.contact { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 0.95rem; }
+.contact li { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 8px; align-items: baseline; }
+.contact .k { font: 500 0.7rem/1 var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.contact .v { min-width: 0; overflow-wrap: anywhere; }
+.copy { font: 500 0.7rem/1 var(--mono); margin-left: 8px; padding: 4px 7px; border-radius: 4px; border: 1px solid var(--rule); background: var(--surface); color: var(--muted); cursor: pointer; }
+.copy:hover { color: var(--ink); border-color: var(--muted); }
+/* ---------- record column */
+main { min-width: 0; display: grid; gap: 64px; }
+.eyebrow { font: 500 0.72rem/1 var(--mono); text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin: 0 0 18px; }
+.lede { font: 500 clamp(1.3rem, 2.4vw, 1.6rem)/1.4 var(--display); letter-spacing: -0.01em; margin: 0; max-width: 34ch; text-wrap: balance; }
+.lede + p { color: var(--muted); max-width: 62ch; margin: 18px 0 0; }
+/* impact ledger — numbers straight from the résumé */
+.ledger { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--ink); }
+.ledger div { padding: 18px 18px 20px 0; border-bottom: 1px solid var(--rule); display: grid; gap: 6px; align-content: start; }
+.ledger div:not(:nth-child(3n+1)) { padding-left: 18px; border-left: 1px solid var(--rule); }
+.ledger b { font: 500 clamp(1.7rem, 3.2vw, 2.2rem)/1 var(--mono); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; color: var(--accent); }
+.ledger span { font-size: 0.9rem; line-height: 1.4; }
+.ledger small { font: 400 0.72rem/1.3 var(--mono); color: var(--muted); }
+/* experience */
+.jobs { display: grid; gap: 0; }
+.job { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 28px; padding: 28px 0; border-top: 1px solid var(--rule); }
+.job:first-child { border-top: 1px solid var(--ink); }
+.when { font: 400 0.82rem/1.5 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.when em { font-style: normal; display: block; }
+.job h3 { font: 700 1.25rem/1.25 var(--display); margin: 0; letter-spacing: -0.01em; }
+.job .org { margin: 4px 0 14px; color: var(--muted); font-size: 0.95rem; }
+.job .org strong { color: var(--ink); font-weight: 600; }
+.job ul { margin: 0; padding-left: 18px; display: grid; gap: 9px; max-width: 66ch; }
+.job li::marker { color: var(--accent); }
+.job li b { font-weight: 600; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.tags span { font: 400 0.74rem/1 var(--mono); padding: 6px 8px; border: 1px solid var(--rule); border-radius: 4px; color: var(--muted); }
+/* skills */
+.skills { display: grid; gap: 0; border-top: 1px solid var(--ink); }
+.skills div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 28px; padding: 16px 0; border-bottom: 1px solid var(--rule); }
+.skills dt { font: 500 0.78rem/1.5 var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.skills dd { margin: 0; }
+/* education */
+.edu { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 28px; padding-top: 22px; border-top: 1px solid var(--ink); }
+.edu h3 { font: 700 1.15rem/1.3 var(--display); margin: 0 0 4px; }
+.edu p { margin: 0; color: var(--muted); }
+footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--rule); padding-top: 20px; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+@media (max-width: 880px) {
+  .wrap { grid-template-columns: minmax(0, 1fr); gap: 48px; padding-block: 36px 56px; }
+  .id { position: static; }
+}
+@media (max-width: 600px) {
+  .ledger { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ledger div:not(:nth-child(3n+1)) { padding-left: 0; border-left: 0; }
+  .ledger div:nth-child(even) { padding-left: 14px; border-left: 1px solid var(--rule); }
+  .job, .skills div, .edu { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .when em { display: inline; }
+  .when em + em::before { content: " · "; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ledger b { transition: color .2s; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <aside class="id" aria-label="Profile">
+    <h1>Deepak Sharma</h1>
+    <p class="role">Backend Software Engineer (SDE 2)<span>Java · Spring Boot · Distributed systems</span></p>
+    <p class="status"><i aria-hidden="true"></i>Open to SDE 2 roles worldwide</p>
+    <ul class="contact">
+      <li><span class="k">Email</span><span class="v"><a href="mailto:deepaksharmaforwork@gmail.com" id="email">deepaksharmaforwork@gmail.com</a><button class="copy" type="button" id="copy-email" data-copy="deepaksharmaforwork@gmail.com">Copy</button></span></li>
+      <li><span class="k">LinkedIn</span><span class="v"><a href="https://www.linkedin.com/in/deepak-sharma-6a7a07121/" target="_blank" rel="noopener">deepak-sharma-6a7a07121</a></span></li>
+      <li><span class="k">GitHub</span><span class="v"><a href="https://github.com/Deepakeuler?tab=repositories" target="_blank" rel="noopener">Deepakeuler</a></span></li>
+      <li><span class="k">LeetCode</span><span class="v"><a href="https://leetcode.com/u/deepaksharmaforwork/" target="_blank" rel="noopener">deepaksharmaforwork</a></span></li>
+      <li><span class="k">Based in</span><span class="v">India · open to relocation (visa sponsorship required)</span></li>
+    </ul>
+  </aside>
+
+  <main>
+    <section aria-labelledby="about">
+      <h2 class="eyebrow" id="about">About</h2>
+      <p class="lede">I build backend systems in Java and Spring Boot that stay fast and reliable under real traffic.</p>
+      <p>Nearly four years of backend engineering, starting at Flipkart, where I worked on seller listing, catalogue and AI-generated product content for features used by millions of daily active users. Since then I've built microservices on Kubernetes for EdTech platforms and mentored 1,000+ students in data structures, algorithms and system design.</p>
+    </section>
+
+    <section aria-labelledby="impact">
+      <h2 class="eyebrow" id="impact">Selected impact</h2>
+      <div class="ledger">
+        <div><b>−30%</b><span>Seller listing turnaround time, via a lock-free Redis redesign</span><small>Flipkart</small></div>
+        <div><b>230k+</b><span>Product descriptions automated with OpenAI APIs</span><small>Flipkart</small></div>
+        <div><b>−50%</b><span>End-to-end integration testing time for catalogue management</span><small>Flipkart</small></div>
+        <div><b>10k+</b><span>Concurrent users at 99.9% uptime during peak traffic</span><small>Newton School of Technology</small></div>
+        <div><b>−40%</b><span>Instructor manual workload, via automated project evaluation</span><small>Newton School of Technology</small></div>
+        <div><b>−25%</b><span>API response times for student dashboards</span><small>Newton School of Technology</small></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="experience">
+      <h2 class="eyebrow" id="experience">Experience</h2>
+      <div class="jobs">
+        <article class="job">
+          <p class="when"><em>May 2025 – Jul 2026</em><em>Bangalore, IN</em></p>
+          <div>
+            <h3>SDE 2</h3>
+            <p class="org"><strong>Newton School of Technology</strong></p>
+            <ul>
+              <li>Engineered high-throughput backend services for real-time feedback systems, reducing instructor manual workload by 40% through automated project evaluation pipelines.</li>
+              <li>Architected resilient microservices with Java / Spring Boot and Kubernetes, supporting 10k+ concurrent users with 99.9% uptime during peak traffic.</li>
+              <li>Optimised database schema and caching strategies, improving API response times for student dashboards by 25%.</li>
+            </ul>
+            <div class="tags"><span>Java</span><span>Spring Boot</span><span>Kubernetes</span><span>Caching</span></div>
+          </div>
+        </article>
+        <article class="job">
+          <p class="when"><em>Oct 2024 – May 2025</em><em>Delhi, IN</em></p>
+          <div>
+            <h3>Senior Tech Consultant (EdTech)</h3>
+            <p class="org"><strong>Hit Bulls Eye, Algo Tutor, Tech Academy</strong></p>
+            <ul>
+              <li>Modernised legacy backend architectures for 3 startups, improving scalability and reducing infrastructure costs by migrating to containerised microservices.</li>
+              <li>Mentored 1,000+ students in advanced DSA and system design, with a high success rate in Tier-1 product company placements.</li>
+            </ul>
+            <div class="tags"><span>Microservices</span><span>Docker</span><span>System design</span></div>
+          </div>
+        </article>
+        <article class="job">
+          <p class="when"><em>Apr 2024 – Oct 2024</em><em>Delhi, IN</em></p>
+          <div>
+            <h3>Product Engineer</h3>
+            <p class="org"><strong>Coding Blocks</strong></p>
+            <ul>
+              <li>Developed search and localisation APIs, reducing global content load times by 15% and improving accessibility for international users.</li>
+              <li>Led the design of interactive student analytics dashboards built on optimised RESTful endpoints.</li>
+            </ul>
+            <div class="tags"><span>REST APIs</span><span>Search</span><span>Localisation</span></div>
+          </div>
+        </article>
+        <article class="job">
+          <p class="when"><em>Sep 2022 – Mar 2024</em><em>Bengaluru, IN</em></p>
+          <div>
+            <h3>Software Development Engineer</h3>
+            <p class="org"><strong>Flipkart</strong></p>
+            <ul>
+              <li><b>Performance:</b> Reduced seller listing turnaround time (TAT) by 30% by re-architecting an Apache Camel-based fork-join framework to be lock-free using Redis.</li>
+              <li><b>AI integration:</b> Led the automation of 230k+ product descriptions with OpenAI APIs, significantly reducing manual operations effort and enhancing SEO-driven pricing strategies.</li>
+              <li><b>Reliability:</b> Built a custom FAT JAR library for catalogue management, cutting end-to-end integration testing time by 50% and lowering cross-team automation costs.</li>
+              <li><b>Core features:</b> Owned the design of EMI enhancements and search feed widgets with cross-functional teams, for features used by millions of daily active users.</li>
+            </ul>
+            <div class="tags"><span>Java</span><span>Apache Camel</span><span>Redis</span><span>OpenAI APIs</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="skills">
+      <h2 class="eyebrow" id="skills">Skills</h2>
+      <dl class="skills">
+        <div><dt>Languages &amp; frameworks</dt><dd>Java, Python, Spring Boot, Apache Camel, Groovy, JUnit, Shell / Linux scripting</dd></div>
+        <div><dt>Infrastructure &amp; tools</dt><dd>Redis, Kafka, HBase, MySQL, Docker, Kubernetes, CI/CD, Maven, Gradle, GitHub</dd></div>
+        <div><dt>Core competencies</dt><dd>Distributed systems, microservices (REST), high- and low-level design, data structures &amp; algorithms, AI engineering, prompt / context / harness engineering</dd></div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="education">
+      <h2 class="eyebrow" id="education">Education</h2>
+      <div class="edu">
+        <p class="when"><em>Class of 2017</em><em>Delhi-NCR</em></p>
+        <div>
+          <h3>B.E. in Computer Science Engineering</h3>
+          <p>Coursework: Distributed Systems, Operating Systems, Advanced Algorithms, DBMS, Networking</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Deepak Sharma · Backend Software Engineer</span>
+      <span>deepaksharmaforwork@gmail.com</span>
+    </footer>
+  </main>
+</div>
+
+<script>
+document.querySelectorAll(".copy").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    var text = btn.getAttribute("data-copy");
+    var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy"; }, 1600); };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById("email"));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected";
+    };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  });
+});
+</script>
+</body>
+</html>
